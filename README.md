@@ -1,5 +1,7 @@
 # 🚆 Chalo Transit Ticketing & Pass Architecture Simulator
 
+
+#Yokun bouz yara agr ny fasun chuy na kune kaaras manz tel ker zene yey use....baki  chuy all the best
 A full-stack implementation and interactive simulator of the core ticketing mechanisms discovered from reverse-engineering the Chalo Transit Android app (`CHALO_TICKETING_ARCHITECTURE.md`).
 
 This project captures the essential mechanics of modern digital transit ticketing: **mTickets**, **SuperPass Subscriptions**, **Dynamic Anti-Fraud QR Codes**, **BLE Proximity Punches**, **Tap-In / Tap-Out (TITO)**, and **Tamper-Proof Time Synchronization**.
