@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#FFC700">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="description" content="Chalo SSCL Srinagar Smart City Electric Bus - Live Digital Ticketing, Dynamic QR, and Soundwave Contactless Validation">
+    <title>Chalo - SSCL Srinagar Bus</title>
+    
+    <!-- Typography: Outfit & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/passenger.css">
+</head>
+<body>
+
+    <!-- Smartphone Mockup Wrapper (Desktop centered, 100% fluid edge-to-edge on phones) -->
+    <div class="passenger-phone-frame">
+        <div class="phone-screen">
+
+            <!-- Chalo Side Navigation Drawer (Screenshot 1: media_1791961593800.png) -->
+            <div class="drawer-overlay" id="drawer-overlay" onclick="passengerApp.toggleDrawer(false)"></div>
+            <aside class="chalo-side-drawer" id="side-drawer">
+                <div class="drawer-profile-header">
+                    <div class="drawer-avatar">
+                        <svg viewBox="0 0 32 32" width="28" height="28" fill="#FFF"><path d="M16 16c3.31 0 6-2.69 6-6s-2.69-6-6-6-6 2.69-6 6 2.69 6 6 6zm0 3c-4.42 0-13 2.21-13 6.67V28h26v-2.33c0-4.46-8.58-6.67-13-6.67z"/></svg>
+                    </div>
+                    <div class="drawer-user-info">
+                        <h3>Ivin</h3>
+                        <a href="javascript:void(0)" onclick="passengerApp.toggleDrawer(false)">View Profile</a>
+                    </div>
+                </div>
+                <ul class="drawer-menu-list">
+                    <li class="drawer-menu-item highlight-box" onclick="passengerApp.switchTab('active'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/></svg>
+                        </span>
+                        <span>Your tickets / passes</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.switchTab('tap'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.93 4.93a10 10 0 0 1 14.14 0"/><path d="M7.76 7.76a6 6 0 0 1 8.48 0"/><path d="M10.59 10.59a2 2 0 0 1 2.82 0"/></svg>
+                        </span>
+                        <span>Tap Phone on Machine</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.switchTab('routes'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        </span>
+                        <span>Stops & Stations</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.switchTab('book'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16"/><path d="M8 15h.01"/><path d="M16 15h.01"/><path d="M6 18v2"/><path d="M18 18v2"/></svg>
+                        </span>
+                        <span>Book Ride</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.switchTab('pass'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        </span>
+                        <span>SuperPass</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.switchTab('history'); passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </span>
+                        <span>Ride History & Receipts</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.toggleDrawer(false);">
+                        <span class="drawer-menu-icon">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </span>
+                        <span>Change City (Srinagar)</span>
+                    </li>
+                    <li class="drawer-menu-item" onclick="passengerApp.toggleDrawer(false);">
+                        <span class="drawer-sos-badge">SOS</span>
+                        <span>Transit Emergency Helpline</span>
+                    </li>
+                </ul>
+                <div class="drawer-footer">
+                    <span>Follow us on</span>
+                    <div class="drawer-social-icons">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+                        <span>Terms and Conditions</span>
+                        <span>V 7.6.4</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chalo In-App Brand Top Bar -->
+            <div class="chalo-app-header">
+                <div class="chalo-header-left">
+                    <button class="chalo-menu-btn" onclick="passengerApp.toggleDrawer(true)" aria-label="Open menu">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#1C1C1E" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <span class="chalo-app-title" id="chalo-screen-title">My Ticket</span>
+                </div>
+                <div class="chalo-agency-tag">
+                    <span>SSCL Srinagar</span>
+                </div>
+            </div>
+
+            <!-- Content Panes (Scrollable Area) -->
+            <div class="passenger-content-area">
+                <!-- Pane 1: Active Ticket Viewport -->
+                <div class="passenger-view-panel active" id="panel-active"></div>
+
+                <!-- Pane 2: Tap Phone on Machine (Screenshot 2: media_1791961608945.png) -->
+                <div class="passenger-view-panel" id="panel-tap"></div>
+
+                <!-- Pane 3: Live Routes & Results (Screenshot 5: media_1791961652076.png) -->
+                <div class="passenger-view-panel" id="panel-routes"></div>
+
+                <!-- Pane 4: Book mTicket (Free of Cost) -->
+                <div class="passenger-view-panel" id="panel-book"></div>
+
+                <!-- Pane 5: SuperPass Subscriptions (Free of Cost) -->
+                <div class="passenger-view-panel" id="panel-pass"></div>
+
+                <!-- Pane 6: History & Receipts -->
+                <div class="passenger-view-panel" id="panel-history"></div>
+            </div>
+
+            <!-- Passenger Bottom Navigation Bar (Pixel-perfect SVG Vector Icons) -->
+            <nav class="passenger-nav-tabs">
+                <button class="passenger-tab-btn active" data-tab="active" id="tab-btn-active">
+                    <svg class="tab-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/>
+                        <line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="2 2"/>
+                    </svg>
+                    <span>My Ticket</span>
+                </button>
+                <button class="passenger-tab-btn" data-tab="tap" id="tab-btn-tap">
+                    <svg class="tab-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4.93 4.93a10 10 0 0 1 14.14 0"/>
+                        <path d="M7.76 7.76a6 6 0 0 1 8.48 0"/>
+                        <path d="M10.59 10.59a2 2 0 0 1 2.82 0"/>
+                        <circle cx="12" cy="18" r="1" fill="currentColor"/>
+                    </svg>
+                    <span>Tap Machine</span>
+                </button>
+                <button class="passenger-tab-btn" data-tab="routes" id="tab-btn-routes">
+                    <svg class="tab-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                    <span>Live Buses</span>
+                </button>
+                <button class="passenger-tab-btn" data-tab="book" id="tab-btn-book">
+                    <svg class="tab-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="4" y="3" width="16" height="15" rx="2"/>
+                        <path d="M4 11h16"/>
+                        <path d="M8 15h.01"/>
+                        <path d="M16 15h.01"/>
+                        <path d="M6 18v2"/>
+                        <path d="M18 18v2"/>
+                    </svg>
+                    <span>Book Ride</span>
+                </button>
+                <button class="passenger-tab-btn" data-tab="pass" id="tab-btn-pass">
+                    <svg class="tab-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                    <span>SuperPass</span>
+                </button>
+            </nav>
+
+        </div>
+    </div>
+
+    <!-- Generic Modal: Trip Receipts, Pass QR, & Tap Confirmations -->
+    <div class="modal-backdrop" id="modal-generic">
+        <div class="modal-window">
+            <button class="modal-close-btn" id="modal-generic-close">&times;</button>
+            <div id="modal-generic-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./scripts/qrcode.min.js"></script>
+    <script src="./scripts/models/MTicket.js"></script>
+    <script src="./scripts/models/SuperPass.js"></script>
+    <script src="./scripts/models/TITOEntity.js"></script>
+    <script src="./scripts/engine/TimeSyncEngine.js"></script>
+    <script src="./scripts/engine/ValidationEngine.js"></script>
+    <script src="./scripts/engine/StateStore.js"></script>
+    <script src="./scripts/passenger/PassengerApp.js"></script>
+    <script src="./scripts/app.js"></script>
+
+</body>
+</html>

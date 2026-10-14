@@ -1,0 +1,278 @@
+/* ==========================================
+   Chalo Transit Design System & Tokens
+   Faithfully recreated from decompiled Chalo Android Compose Theme:
+   app.chalo.compose.theme (ChaloColor.java & ChaloThemeKt.java)
+   ========================================== */
+:root {
+    /* Chalo Brand Colors */
+    --chalo-yellow: #FFC700;
+    --chalo-yellow-dark: #E5B300;
+    --chalo-yellow-light: #FFF9E6;
+    --chalo-orange: #EA580C;
+    --chalo-orange-bg: #FFF7ED;
+
+    --chalo-black: #1C1C1E;
+    --chalo-dark: #0F172A;
+    --chalo-dark-gray: #334155;
+    --chalo-gray: #64748B;
+    --chalo-light-gray: #94A3B8;
+    --chalo-border: #E2E8F0;
+    --chalo-border-light: #F1F5F9;
+
+    --chalo-bg: #F4F5F8; /* ActivityBackground in ChaloColor.java */
+    --chalo-card: #FFFFFF;
+    --chalo-surface: #FFFFFF;
+
+    /* Semantic Transit Colors */
+    --chalo-green: #00875A;
+    --chalo-green-bg: #ECFDF5;
+    --chalo-green-border: #A7F3D0;
+
+    --chalo-red: #DE350B;
+    --chalo-red-bg: #FEF2F2;
+    --chalo-red-border: #FECACA;
+
+    --chalo-blue: #0284C7;
+    --chalo-blue-bg: #F0F9FF;
+
+    /* Typography */
+    --font-chalo: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+    /* Radii */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+    --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* True Mobile-First Responsive Shell */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-chalo);
+    background-color: #F4F5F8;
+    color: var(--chalo-black);
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* On Desktop: Centered Phone Mockup */
+@media (min-width: 501px) {
+    body {
+        background-color: #0B1120;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px 0;
+    }
+
+    .passenger-phone-frame {
+        width: 100%;
+        max-width: 420px;
+        height: 850px;
+        max-height: 95vh;
+        background: #FFFFFF;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+}
+
+/* On Mobile Phones (320px - 500px): 100% Native Edge-to-Edge */
+@media (max-width: 500px) {
+    body {
+        background-color: #F4F5F8;
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    .passenger-phone-frame {
+        width: 100vw;
+        max-width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        min-height: 100vh;
+        min-height: 100dvh;
+        background: #F4F5F8;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #F4F5F8;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ==========================================
+   Common Reusable Components & Buttons
+   ========================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--font-chalo);
+    font-size: 0.88rem;
+    font-weight: 700;
+    padding: 12px 18px;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.btn-primary {
+    background: var(--chalo-yellow);
+    color: var(--chalo-black);
+    box-shadow: 0 3px 10px rgba(255, 199, 0, 0.35);
+}
+
+.btn-primary:hover {
+    background: var(--chalo-yellow-dark);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-outline {
+    background: #FFFFFF;
+    color: #334155;
+    border: 1px solid #CBD5E1;
+}
+
+.btn-outline:hover {
+    background: #F8FAFC;
+    border-color: #94A3B8;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-sm {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    border-radius: var(--radius-sm);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: var(--radius-full);
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.badge-success {
+    background: var(--chalo-green-bg);
+    color: var(--chalo-green);
+    border: 1px solid var(--chalo-green-border);
+}
+
+.badge-warning {
+    background: #FEF3C7;
+    color: #B45309;
+    border: 1px solid #FDE68A;
+}
+
+.badge-danger {
+    background: var(--chalo-red-bg);
+    color: var(--chalo-red);
+    border: 1px solid var(--chalo-red-border);
+}
+
+/* ==========================================
+   Generic Modal Backdrop & Card
+   ========================================== */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-backdrop.active {
+    display: flex;
+}
+
+.modal-window {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 380px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #F1F5F9;
+    border: none;
+    color: #475569;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-full);
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}

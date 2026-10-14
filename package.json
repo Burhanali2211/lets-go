@@ -1,0 +1,23 @@
+{
+  "name": "chalo-ticketing-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "node -e \"const fs=require('fs'); fs.cpSync('public', 'dist', {recursive: true});\"",
+    "build:qr": "esbuild node_modules/qrcode/lib/browser.js --bundle --minify --format=iife --global-name=QRCode --outfile=public/scripts/qrcode.min.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}
